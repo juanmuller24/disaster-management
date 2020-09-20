@@ -1,141 +1,37 @@
-import 'package:disastermanagement/homePage.dart';
+
+import 'package:disastermanagement/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Disaster_Management(),
-    debugShowCheckedModeBanner: false,
+  runApp(MyApp(
   ));
+
 }
 
-class Disaster_Management extends StatefulWidget {
-  @override
-  _Disaster_ManagementState createState() => _Disaster_ManagementState();
-}
-
-class _Disaster_ManagementState extends State<Disaster_Management> {
-  String name;
-  String email;
-  String pass;
-  String phnum;
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:  SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(30),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText:'Name',
-
-                    border: OutlineInputBorder(),
-                  ),
-                  maxLength: 200,
-                  validator: (val)=>val.isEmpty?'Enter Name':null,
-                  onChanged: (val){
-                    setState(() {
-                      name=val;
-                    });
-                  },
-                  onSaved: (val){
-                    name=val;
-                  },
-                ),
-                SizedBox(height: 20,),
-
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Phone Number',
-
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (val){
-                    if(val.isEmpty){return 'Enter Phone number';}
-                    return null;
-                  },
-                  onChanged: (val){
-                    setState(() {
-                      email=val;
-                    });
-                  },
-                ),
-
-                SizedBox(height: 35,),
-
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Age',
-
-                    border: OutlineInputBorder(),
-                  ),
-                  keyboardType: TextInputType.number,
-                  validator: (val){
-                    if(val.isEmpty){return 'Enter Age';}
-                    return null;
-                  },
-                  onChanged: (val){
-                    setState(() {
-                      phnum=val;
-                    });
-                  },
-                ),
-
-                SizedBox(height: 35,),
-
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-
-                    hintText: 'Profession',
-
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (val){
-                    if(val.isEmpty||val.length<10){return 'Enter a Profession';}
-                    return null;
-                  },
-                  onChanged: (val){
-                    setState(() {
-                      pass=val;
-                    });},),
-
-                SizedBox(height: 20,),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-
-                    hintText: 'Address',
-
-                    border: OutlineInputBorder(),
-                  ),
-                  validator: (val){
-                    if(val.isEmpty||val.length<10){return 'Enter a Address';}
-                    return null;
-                  },
-                  onChanged: (val){
-                    setState(() {
-                      pass=val;
-                    });},),
-                RaisedButton.icon(onPressed:(){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-                },
-                    icon: Icon(Icons.add),
-                    label: Text('SUBMIT'))
-              ],
-            ),
-          ),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Bits_N_Bytes',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+        // This makes the visual density adapt to the platform that you run
+        // the app on. For desktop platforms, the controls will be smaller and
+        // closer together (more dense) than on mobile platforms.
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-
-
-    
+      home: MyApps(),
     );
   }
 }
